@@ -1,0 +1,14 @@
+:8080
+forward_proxy
+
+# Example Rule for GitHub API (1 request per second)
+handle_host api.github.com {
+    rate_limit 1 5
+    forward_proxy
+}
+
+# Default Rule for all other hosts
+handle {
+    rate_limit 5 10
+    forward_proxy
+}
