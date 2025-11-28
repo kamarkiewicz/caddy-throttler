@@ -1,6 +1,7 @@
 # Stage 1: The Builder
 FROM caddy:builder AS builder
 RUN xcaddy build \
+    --with github.com/caddyserver/forwardproxy \
     --with github.com/mholt/caddy-ratelimit
 
 # Stage 2: The Final Image
